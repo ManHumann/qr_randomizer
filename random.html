@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Randomizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #ffb6c1;
+      }
+      #randomImage {
+        max-width: 600px; /* Increased from 500px to 800px */
+        max-height: 600px; /* Increased from 500px to 800px */
+        width: 90vw; /* Take up 90% of viewport width */
+        height: auto; /* Maintain aspect ratio */
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        object-fit: cover; /* Ensures image covers the area without distortion */
+      }
+      #randomizeBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      #randomizeBtn:hover {
+        background-color: #45e630;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>QR Randomizer</h1>
+    <img id="randomImage" src="" alt="Random Image" />
+    <button id="randomizeBtn">Randomize QR</button>
+
+    <script>
+      // Array of image URLs with larger images
+      const images = [
+        "pictures/img_1.jpg",
+        "pictures/img_2.jpg",
+        "pictures/img_3.jpg",
+        "pictures/img_4.jpg",
+      ];
+
+      // Get references to DOM elements
+      const imageElement = document.getElementById("randomImage");
+      const randomizeButton = document.getElementById("randomizeBtn");
+
+      // Function to select and display a random image
+      function randomizeImage() {
+        // Generate a random index between 0 and the length of the images array
+        const randomIndex = Math.floor(Math.random() * images.length);
+
+        // Set the image source to the randomly selected image
+        imageElement.src = images[randomIndex];
+      }
+
+      // Add click event listener to the button
+      randomizeButton.addEventListener("click", randomizeImage);
+
+      // Initialize with a random image on page load
+      randomizeImage();
+    </script>
+  </body>
+</html>
